@@ -1,14 +1,14 @@
-import express from 'express';
+import { Router } from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
-var __filename = fileURLToPath(import.meta.url);
-var __dirname = path.dirname(__filename);
-export var router = express();
+import { getCurrentPath } from './../util/path.js';
+var __dirname = getCurrentPath();
+export var router = Router();
+export var products = [];
 router.get('/add-product', function (req, res, next) {
     // res.send('<h1>Add New Product</h1>');
     res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
 });
 router.post('/add-product', function (req, res, next) {
-    console.log(req.body);
+    products.push({ title: req.body.title });
     res.redirect('/');
 });

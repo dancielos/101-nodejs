@@ -1,9 +1,13 @@
-import express from 'express';
+import { Router } from 'express';
 import path from 'path';
-import { __dirname } from './../util/path.js';
+import { getCurrentPath } from './../util/path.js';
+import { products } from './admin.js';
 
-export const router = express();
+const __dirname = getCurrentPath();
+
+export const router = Router();
 
 router.get('/', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
+	console.log(products);
 });

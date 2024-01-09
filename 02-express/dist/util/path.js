@@ -1,4 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-export var __filename = fileURLToPath(import.meta.url);
-export var __dirname = path.dirname(__filename);
+export function getCurrentPath() {
+    var __filename = fileURLToPath(import.meta.url);
+    var __dirname = path.dirname(__filename);
+    return __dirname;
+}

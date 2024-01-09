@@ -3,21 +3,21 @@
 	"compilerOptions": {
 		"lib": ["ESNext", "dom"],
 		"target": "es5",
-		"module": "ESNext",
-		"moduleResolution": "node",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"noImplicitAny": true,
 		"sourceMap": false,
 		"outDir": "./dist",
 		"rootDir": "./src",
-		"baseUrl": "./",
+		"baseUrl": ".",
 		"strict": true,
 		"paths": {
-			"@util/*": ["src/util/*"]
+			"@util/*": ["./src/util/*", "./dist/util/*"]
 			// "*": ["node_modules/*", "src/types/*"]
 		}
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "src/app.ts"],
 	"exclude": ["node_modules"]
 }

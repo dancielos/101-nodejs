@@ -1,12 +1,15 @@
-import express from 'express';
+import { Router } from 'express';
 import path from 'path';
+import { getCurrentPath } from './../util/path.js';
 
-import { fileURLToPath } from 'url';
+const __dirname = getCurrentPath();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+type product = {
+	title: string;
+};
 
-export const router = express();
+export const router = Router();
+export const products: product[] = [];
 
 router.get('/add-product', (req, res, next) => {
 	// res.send('<h1>Add New Product</h1>');
@@ -14,6 +17,6 @@ router.get('/add-product', (req, res, next) => {
 });
 
 router.post('/add-product', (req, res, next) => {
-	console.log(req.body);
+	products.push({ title: req.body.title });
 	res.redirect('/');
 });
