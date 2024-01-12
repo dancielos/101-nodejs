@@ -19,13 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-	User.findById('65a03657413f76ea67c7f292')
-		.then((user) => {
-			req.user = new User(user.username, user.email, user.cart, user._id);
-			console.log('user found!', user);
-			next();
-		})
-		.catch((err) => console.error(err));
+  User.findById('5baa2528563f16379fc8a610')
+    .then(user => {
+      req.user = new User(user.name, user.email, user.cart, user._id);
+      next();
+    })
+    .catch(err => console.log(err));
 });
 
 app.use('/admin', adminRoutes);
@@ -33,7 +32,6 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect((client) => {
-	console.log(client);
-	app.listen(3000);
+mongoConnect(() => {
+  app.listen(3000);
 });
